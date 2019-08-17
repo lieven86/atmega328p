@@ -32,23 +32,7 @@
 #define LONGBIT(x) ((unsigned long)0x00000001 << (x))
 
 namespace lib {
-// 28 - 12 = 16
-// inline int16_t Interpolate1228(const int16_t* table, uint32_t phase) {
-//   int32_t a = table[phase >> 28];
-//   int32_t b = table[(phase >> 28) + 1];
-//   return a + ((b - a) * static_cast<int32_t>((phase >> 12) & 0xffff) >> 16);
-// }
-
-inline int16_t Interpolate824(const uint8_t* table, uint32_t phase)
-  __attribute__((always_inline));
-
-inline int16_t Interpolate824(const uint8_t* table, uint32_t phase) {
-  int32_t a = table[phase >> 24];
-  int32_t b = table[(phase >> 24) + 1];
-  return (a << 8) + \
-      ((b - a) * static_cast<int32_t>(phase & 0xffffff) >> 16) - 32768;
-}
-
+ // add functions here
 }
 
 #endif
